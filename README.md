@@ -44,7 +44,11 @@ nvidia-smi
 
 ```
 ## Ollama installation
-
+```
+curl -fsSL https://ollama.com/install.sh | sh
+ollama --version
+ollama version is 0.9.2
+```
 ## Anythingllm installation
 
 ## Additional Notes
