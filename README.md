@@ -43,5 +43,8 @@ nvidia-smi
 +-----------------------------------------------------------------------------+
 
 ```
+## Ollama installation
 
+## Anythingllm installation
 
+## Additional Notes
