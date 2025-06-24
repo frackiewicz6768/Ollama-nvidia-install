@@ -5,20 +5,17 @@ This document outlines methods for enumerating an organization’s network using
 Table of Contents
 
    1. Graphic card drivers installation
-   2. Ollama installation
-       - Requirements
-       - Using dsquery
-       - Using Graphical Interface
-   3. Anythingllm installation
-   4.  Additional Notes
+   3. Ollama installation
+   4. Anythingllm installation
+   5.  Additional Notes
 
-## Manual enumeration
+## Graphic card drivers installation
 
-###  dsquery
+###  Graphic card detection
 
-The dsquery command-line tool is a powerful way to query Active Directory objects. 
-To use dsquery, ensure RSAT is installed on your system. You can install it using the following PowerShell command:
-
+```
+lspci | grep -i vga
+```
     Get-WindowsCapability -Name RSAT* -Online
 
 Common Commands
