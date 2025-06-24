@@ -19,6 +19,8 @@ For NVIDIA RTX A6000 on ubuntu best drivers are from 525 series or newer. We try
 
 ```
 sudo ubuntu-drivers install nvidia:535
+reboot
+nvidia-smi
 ```
 
 
