@@ -2,10 +2,11 @@
 
 Table of Contents
 
-   1. Graphic card drivers installation
-   3. Ollama installation
-   4. Anythingllm installation
-   5.  Additional Notes
+1. [Graphic card drivers installation](#graphic-card-drivers-installation)  
+2. [Ollama installation](#ollama-installation)  
+3. [Anythingllm installation](#anythingllm-installation)  
+4. [Additional Notes](#additional-notes)
+
 
 ## Graphic card drivers installation
 
