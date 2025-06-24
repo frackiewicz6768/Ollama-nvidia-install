@@ -49,6 +49,31 @@ curl -fsSL https://ollama.com/install.sh | sh
 ollama --version
 ollama version is 0.9.2
 ```
+### Ollama service
+```
+sudo nano /etc/systemd/system/ollama.service
+
+[Unit]
+Description=Ollama Service
+After=network-online.target
+
+[Service]
+ExecStart=/usr/bin/ollama serve
+User=ollama
+Group=ollama
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=default.target
+
+sudo systemctl daemon-reexec     
+sudo systemctl daemon-reload  
+sudo systemctl enable ollama 
+sudo systemctl start ollama 
+
+
+```
 ## Anythingllm installation
 
 ## Additional Notes
