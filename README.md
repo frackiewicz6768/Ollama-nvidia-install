@@ -1,7 +1,5 @@
 # Ollama-nvidia-install
 
-Enumeration is the process of systematically gathering detailed information about a system, network, or application to understand its structure, resources, and configuration. It is a critical phase in both system administration and penetration testing, often following reconnaissance.
-This document outlines methods for enumerating an organization’s network using different techniques. The focus is on utilizing manual and automatic enumerations.
 Table of Contents
 
    1. Graphic card drivers installation
@@ -15,28 +13,12 @@ Table of Contents
 
 ```
 lspci | grep -i vga
+65:00.0 VGA compatible controller: NVIDIA Corporation GA102GL [A6000] (rev a1)
 ```
-    Get-WindowsCapability -Name RSAT* -Online
+For NVIDIA RTX A6000 on ubuntu best drivers are from 525 series or newer. We try to install 535 stable.
 
-Common Commands
+```
+sudo ubuntu-drivers install nvidia:535
+```
 
-List all users in the domain:
 
-    dsquery user -name *
-
-Find a specific user:
-
-    dsquery user -name "John Doe"
-
-List all groups in the domain:
-
-    dsquery group -name *
-
-List all computers in the domain:
-
-    dsquery computer -name *
-
-Using Graphical Interface
-
-If RSAT is not installed, you can use the graphical query window provided by rundll32.exe to enumerate objects in Active Directory.
-Steps to Use the Graphical Interface
