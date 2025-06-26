@@ -107,6 +107,7 @@ docker ps
 After confirmation that everytning works fine download desired models:
 
 ```
+ollama help
 Large language model runner
 
 Usage:
