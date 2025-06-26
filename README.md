@@ -160,4 +160,52 @@ echo -e "\n✅ Ready!"
 ```
 
 ## Additional Notes
-TBD...
+### Docker User Namespace Remapping
+By default, Docker containers run as the root user inside the container. This root user maps to the root user on the host, which poses security risks.
+If a process breaks out of the container, it can potentially gain root access on the host system.
+
+User namespace remapping is a security feature that maps the root user inside the container to a non-root user on the host. This minimizes the damage potential if a container is compromised.
+
+How to Enable and Configure UNR.
+1. Create dedicated user for docker remap:
+```
+sudo adduser --system --disabled-password --group docker_user
+```
+
+2. Configure subuid and subgid
+```
+sudo nano /etc/subuid
+sudo nano /etc/subgid
+
+```
+and put in them at the top of the all rows
+
+```
+docker_user:165536:65536
+```
+3. Enable remapping in Docker config
+```
+{
+  "userns-remap": "docker_user",
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "10m",
+    "max-file": "3"
+  }
+}
+```
+4. Restart services
+```
+systemctl restart docker.service docker.socket containderd
+```
+5. Verify
+```
+docker run --rm -it mintplexlabs/anythingllm id
+ls /var/lib/docker/165536.165536/
+```
+6. Set permissions for volumes
+```
+sudo chown 165536:165536 ./your-mount-dir
+```
+
+
