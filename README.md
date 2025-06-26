@@ -76,4 +76,86 @@ sudo systemctl start ollama
 ```
 ## Anythingllm installation
 
+Prepare docker-compose.yaml
+```
+services:
+  anythingllm:
+    image: mintplexlabs/anythingllm:latest
+    container_name: anythingllm
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./storage:/app/server/storage
+    cap_add:
+      - SYS_ADMIN
+    environment:
+      - STORAGE_DIR=/app/server/storage
+    user: "1005:1005" # custom user
+    networks:
+      anything-llm:
+    restart: unless-stopped
+
+networks:
+  anything-llm:
+    driver: bridge
+```
+Next start anythinll by using a command:
+```
+docker compose up -d
+docker ps
+```
+After confirmation that everytning works fine download desired models:
+
+```
+Large language model runner
+
+Usage:
+  ollama [flags]
+  ollama [command]
+
+Available Commands:
+  serve       Start ollama
+  create      Create a model from a Modelfile
+  show        Show information for a model
+  run         Run a model
+  stop        Stop a running model
+  pull        Pull a model from a registry
+  push        Push a model to a registry
+  list        List models
+  ps          List running models
+  cp          Copy a model
+  rm          Remove a model
+  help        Help about any command
+
+Flags:
+  -h, --help      help for ollama
+  -v, --version   Show version information
+```
+You can use sucha script to download models:
+```
+#!/usr/bin/env bash
+set -e
+
+MODELS=(
+  phi3 qwen2 mxbai-embed-large olmo2 deepseek-v3 qwq bge-m3 llama2-uncensored
+  llava-llama3 mixtral mistral-small smollm2 starcoder2 deepseek-coder-v2
+  deepseek-coder snowflake-arctic-embed codegemma all-minilm phi
+  dolphin-mixtral openthinker orca-mini wizardlm2 dolphin-mistral
+  dolphin-llama3 codestral smollm command-r hermes3 phi3.5 yi zephyr
+  granite-code moondream wizard-vicuna-uncensored phi4-mini starcoder
+  vicuna mistral-openorca openchat codegeex4 deepseek-v2
+)
+
+TAG="latest"
+
+echo "Downloading models from Ollama Library..."
+
+for MODEL in "${MODELS[@]}"; do
+  echo -e "\n🔁 Pobieram: $MODEL:$TAG"
+  ollama pull "$MODEL:$TAG" || echo "Not possible: $MODEL"
+done
+
+echo -e "\n✅ Ready!"
+```
+
 ## Additional Notes
