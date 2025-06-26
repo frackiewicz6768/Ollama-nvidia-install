@@ -132,7 +132,7 @@ Flags:
   -h, --help      help for ollama
   -v, --version   Show version information
 ```
-You can use sucha script to download models:
+You can use such a script to download models:
 ```
 #!/usr/bin/env bash
 set -e
