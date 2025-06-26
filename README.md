@@ -152,7 +152,7 @@ TAG="latest"
 echo "Downloading models from Ollama Library..."
 
 for MODEL in "${MODELS[@]}"; do
-  echo -e "\n🔁 Pobieram: $MODEL:$TAG"
+  echo -e "\n🔁 Download: $MODEL:$TAG"
   ollama pull "$MODEL:$TAG" || echo "Not possible: $MODEL"
 done
 
