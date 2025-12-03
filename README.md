@@ -127,6 +127,7 @@ Available Commands:
   cp          Copy a model
   rm          Remove a model
   help        Help about any command
+  /bye        Exit model
 
 Flags:
   -h, --help      help for ollama
